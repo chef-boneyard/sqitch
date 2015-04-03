@@ -1,0 +1,1 @@
+default['sqitch']['engine'] = 'pg'
