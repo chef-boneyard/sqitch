@@ -1,6 +1,6 @@
-site :opscode
+source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook "apt"
-cookbook "postgresql"
+cookbook 'apt'
+cookbook 'postgresql'
