@@ -50,7 +50,7 @@ def do_sqitch_action(action, command)
       # Similar to the deploy case, reverting to a tag when you are
       # beyond the tag will have a return code of 0.  Reverting to a
       # tag when you're already at that tag returns a 1
-      returns [0,1]
+      returns [0, 1]
     end
   end
 end
@@ -62,7 +62,7 @@ end
 # @return [void]
 def include_sqitch
   recipe_eval do
-    run_context.include_recipe "sqitch::default"
+    run_context.include_recipe 'sqitch::default'
   end
 end
 
@@ -75,9 +75,9 @@ def deploy_command
 
   cmd = add_target(cmd)
 
-  cmd << "--verify" # always verify when deploying!  Verification
-                    # failures can trigger a rollback of changes (on
-                    # postgres, anyway... transactional DDL FTW)
+  cmd << '--verify' # always verify when deploying!  Verification
+  # failures can trigger a rollback of changes (on
+  # postgres, anyway... transactional DDL FTW)
 
   # Currently not providing support for the following options:
   #
@@ -97,8 +97,8 @@ def revert_command
 
   cmd = add_target(cmd)
 
-  cmd << "-y" # Yes, we're sure we want to revert the changes; a Chef
-              # run is not an interactive context, after all
+  cmd << '-y' # Yes, we're sure we want to revert the changes; a Chef
+  # run is not an interactive context, after all
 
   # Currently not providing support for the following options:
   #
@@ -125,28 +125,28 @@ end
 #
 # @return [Array<String>]
 def make_base_command(action)
-  cmd = add_options(["sqitch"], # The beginning of our CLI command
+  cmd = add_options(['sqitch'], # The beginning of our CLI command
 
                    # These are all the global options specified by the
                    # Resource (as their Ruby method names)
 
-                   [# general options
-                    'engine',
-                    'extension',
-                    'plan_file',
+                   [ # general options
+                     'engine',
+                     'extension',
+                     'plan_file',
 
-                    # connection info
-                    'db_client',
-                    'db_name',
-                    'db_user',
-                    'db_host',
-                    'db_port',
+                     # connection info
+                     'db_client',
+                     'db_name',
+                     'db_user',
+                     'db_host',
+                     'db_port',
 
-                    # directories
-                    'top_dir',
-                    'deploy_dir',
-                    'revert_dir',
-                    'verify_dir'])
+                     # directories
+                     'top_dir',
+                     'deploy_dir',
+                     'revert_dir',
+                     'verify_dir'])
 
   # Tack on the specific sqitch command to invoke
   cmd << action
@@ -181,7 +181,7 @@ end
 #   corresponds to the CLI flag `--top-dir`.
 def add_option(cmd, method_name)
   if (value = new_resource.send(method_name))
-    flag_name = method_name.gsub(/_/, '-')
+    flag_name = method_name.tr('_', '-')
     cmd << "--#{flag_name} #{value}"
   else
     cmd
@@ -222,17 +222,17 @@ def why_run_message_for(action)
   when :deploy
     s = status
     if s.nothing_to_deploy?
-      "deploy nothing, because everything is up-to-date"
+      'deploy nothing, because everything is up-to-date'
     else
-"""deploy the following changesets:
+      ''"deploy the following changesets:
 
-#{s.changes_to_deploy.join("\n")}
-"""
+      #{s.changes_to_deploy.join("\n")}
+      "''
     end
   else
     # Just a little safety net for the future...
     Chef::Log.error("Unrecognized action for sqitch resource: #{new_resource.action}!")
-    raise
+    fail
   end
 end
 
@@ -242,21 +242,19 @@ def status
   # We're basically executing `sqitch status`, subject to the options
   # that have been set on the Resource.
 
-  env = new_resource.user ? {:user => new_resource.user} : {}
+  env = new_resource.user ? { user: new_resource.user } : {}
 
-  sqitch_status = Mixlib::ShellOut.new(make_base_command("status").join(" "), env )
+  sqitch_status = Mixlib::ShellOut.new(make_base_command('status').join(' '), env)
   sqitch_status.run_command
   Sqitch::Status.new(sqitch_status.stdout,
                      sqitch_status.stderr)
 end
 
 module Sqitch
-
   # Encapsulates the output of a `sqitch status` command invocation
   # and provides various introspection methods based on a parsing of
   # that output.
   class Status
-
     # Initialize with the standard output and standard error of an
     # invocation of `sqitch status`.  The command should have already
     # been run; this is just to figure out what the output says.
@@ -264,7 +262,8 @@ module Sqitch
     # @param stdout [String]
     # @param stderr [String]
     def initialize(stdout, stderr)
-      @stdout, @stderr = stdout, stderr
+      @stdout = stdout
+      @stderr = stderr
     end
 
     # Indicate if sqitch has not yet been used to manage a given
@@ -301,7 +300,7 @@ module Sqitch
         #
         # So, this is an admittedly hacky workaround, but it probably
         # expresses the intent well enough.
-        ["all the changesets!"]
+        ['all the changesets!']
       elsif nothing_to_deploy?
         [] # <-- Yup, nothing!
       else
@@ -331,7 +330,7 @@ module Sqitch
         lines = @stdout.split("\n")
 
         # Get rid of everything until the undeployed changes
-        undeployed = lines.drop_while{|line| line !~ /Undeployed changes/}
+        undeployed = lines.drop_while { |line| line !~ /Undeployed changes/ }
 
         # At this point, we have something like this:
         #
@@ -345,7 +344,7 @@ module Sqitch
 
         # Now we have something like this:
         #
-        #["* actor_has_bulk_permission_on @1.2.0 @1.2.1 @1.2.2",
+        # ["* actor_has_bulk_permission_on @1.2.0 @1.2.1 @1.2.2",
         # "* update_acl"]
 
         # Now we can isolate just the changeset names
@@ -358,10 +357,9 @@ module Sqitch
           #
           # [1]: https://metacpan.org/module/sqitchchanges
           line =~ /^\* ([^ ]+).*$/
-          $1
+          Regexp.last_match(1)
         end
       end
     end
-
   end
 end
