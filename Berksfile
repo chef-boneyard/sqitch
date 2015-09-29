@@ -2,5 +2,7 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'apt'
-cookbook 'postgresql'
+group :integration do
+  cookbook 'apt'
+  cookbook 'postgresql'
+end
