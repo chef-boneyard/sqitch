@@ -15,9 +15,17 @@ for using Sqitch to deploy database schema changes.
 Tested on PostgreSQL.  Theoretically supports SQLite and Oracle as
 well, but is untested for those platforms.
 
-## Requirements
+##Requirements
+#### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
 
-* `perl` (Sqitch is a Perl application)
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- perl
+
 
 ## Usage
 
@@ -74,11 +82,12 @@ server:
 
 License & Authors
 -----------------
-- Author:: Christopher Maier (<cm@chef.io>)
 
-```text
-Copyright 2009-2015, Chef Software, Inc.
+**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
+**Copyright:** 2008-2015, Chef Software, Inc.
+
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
