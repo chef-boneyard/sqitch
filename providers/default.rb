@@ -274,7 +274,7 @@ module Sqitch
     #
     # @return [Boolean]
     def not_a_sqitch_db_yet?
-      !!(@stderr =~ /ERROR:  relation "changes" does not exist/)
+      !(@stderr =~ /ERROR:  relation "changes" does not exist/).nil?
     end
 
     # Indicate whether there are any changesets to deploy to bring the
@@ -282,7 +282,7 @@ module Sqitch
     #
     # @return [Boolean]
     def nothing_to_deploy?
-      !!(@stdout =~ /Nothing to deploy/)
+      !(@stdout =~ /Nothing to deploy/).nil?
     end
 
     # Provide a list of all sqitch changesets that need to be deployed

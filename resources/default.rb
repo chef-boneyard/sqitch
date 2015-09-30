@@ -135,7 +135,7 @@ def after_created
   end
 
   # TODO: This may not be the case if using a config file
-  if %w(pg oracle).include?(engine) && db_name.nil?
+  if %w(pg oracle).include?(engine) && db_name.nil? # rubocop:disable Style/GuardClause
     Chef::Log.error("A value for `db_name` is required for engine `#{engine}`!")
     fail
   end
