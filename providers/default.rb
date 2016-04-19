@@ -232,7 +232,7 @@ def why_run_message_for(action)
   else
     # Just a little safety net for the future...
     Chef::Log.error("Unrecognized action for sqitch resource: #{new_resource.action}!")
-    fail
+    raise
   end
 end
 

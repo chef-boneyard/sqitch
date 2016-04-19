@@ -131,12 +131,12 @@ def after_created
   # (Here, `action` is an array.  We only support a single action, though)
   if action.include?(:revert) && to_target.nil?
     Chef::Log.error("The revert action requires a value for 'to_target' (not supporting the wholesale reversion of an entire schema)!")
-    fail
+    raise
   end
 
   # TODO: This may not be the case if using a config file
   if %w(pg oracle).include?(engine) && db_name.nil? # rubocop:disable Style/GuardClause
     Chef::Log.error("A value for `db_name` is required for engine `#{engine}`!")
-    fail
+    raise
   end
 end
