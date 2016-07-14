@@ -135,7 +135,6 @@ def after_created
   end
 
   # TODO: This may not be the case if using a config file
-<<<<<<< HEAD
   if %w(pg oracle mysql).include?(engine) && db_name.nil?
     Chef::Log.error("A value for `db_name` is required for engine `#{engine}`!")
     raise

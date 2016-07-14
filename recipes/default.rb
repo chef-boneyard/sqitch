@@ -8,9 +8,9 @@
 include_recipe 'perl'
 
 # TODO: Consider using the cpan[1] cookbook instead for more robust
-# installation (specifying versions, installing from an artifact, etc.)
+# installation (installing from an artifact, etc.)
 #
-# [1]: http://community.opscode.com/cookbooks/cpan
+# [1]: https://supermarket.chef.io/cookbooks/perl
 cpan_module 'App::Sqitch'
 
 # Map values of node['sqitch']['engine'] to the Perl modules that
@@ -18,7 +18,8 @@ cpan_module 'App::Sqitch'
 engine_modules = {
   'pg'     => 'DBD::Pg',
   'sqlite' => 'DBD::SQLite',
-  'oracle' => 'DBD::oracle'
+  'oracle' => 'DBD::oracle',
+  'mysql'  => 'DBD::mysql'
 }
 
 # Install the engine the user wants
