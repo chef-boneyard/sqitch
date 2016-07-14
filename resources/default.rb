@@ -24,7 +24,7 @@ default_action :deploy
 attribute :engine,
 kind_of: String,
 default: node['sqitch']['engine'],
-equal_to: %w(pg sqlite oracle)
+equal_to: %w(pg sqlite oracle mysql)
 
 # The absolute path to the database client application (e.g. `psql`
 # for PostgreSQL) that sqitch should use to interact with the
@@ -135,7 +135,7 @@ def after_created
   end
 
   # TODO: This may not be the case if using a config file
-  if %w(pg oracle).include?(engine) && db_name.nil?
+  if %w(pg oracle mysql).include?(engine) && db_name.nil?
     Chef::Log.error("A value for `db_name` is required for engine `#{engine}`!")
     raise
   end

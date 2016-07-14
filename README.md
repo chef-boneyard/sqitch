@@ -12,7 +12,7 @@ for using Sqitch to deploy database schema changes.
 - `sqitch` LWRP with support for deploying and reverting schema changes
 - `why-run` support, indicating which changesets (if any) would be deployed
 
-Tested on PostgreSQL.  Theoretically supports SQLite and Oracle as
+Tested on PostgreSQL.  Theoretically supports SQLite, Oracle, and MySQL as
 well, but is untested for those platforms.
 
 ##Requirements
