@@ -11,3 +11,4 @@ depends 'perl', '>= 1.0.0'
 
 source_url 'https://github.com/chef-cookbooks/sqitch' if respond_to?(:source_url)
 issues_url 'https://github.com/chef-cookbooks/sqitch/issues' if respond_to?(:issues_url)
+
