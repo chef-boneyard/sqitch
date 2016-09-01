@@ -8,8 +8,9 @@ version          '0.6.0'
 recipe           'sqitch', 'Installs sqitch'
 
 depends 'perl', '>= 1.0.0'
+depends 'build-essential'
 
-source_url 'https://github.com/chef-cookbooks/sqitch' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/sqitch/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/sqitch'
+issues_url 'https://github.com/chef-cookbooks/sqitch/issues'
 
-chef_version '>= 11' if respond_to?(:chef_version)
+chef_version '>= 12' if respond_to?(:chef_version)
