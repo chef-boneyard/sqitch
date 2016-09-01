@@ -2,7 +2,7 @@
 # Cookbook Name:: sqitch
 # Recipe:: default
 #
-# Copyright 2013-2015, Chef Software, Inc.
+# Copyright 2013-2016, Chef Software, Inc.
 #
 
 include_recipe 'perl'
