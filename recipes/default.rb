@@ -23,5 +23,8 @@ engine_modules = {
   'mysql'  => 'DBD::mysql'
 }
 
+# prevent pg module install failures on debian platforms
+package 'libpq-dev' if node['platform_family'] == 'debian' && node['sqitch']['engine'] == 'pg'
+
 # Install the engine the user wants
 cpan_module engine_modules[node['sqitch']['engine']]
