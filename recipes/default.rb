@@ -5,6 +5,7 @@
 # Copyright 2013-2016, Chef Software, Inc.
 #
 
+include_recipe 'build-essential'
 include_recipe 'perl'
 
 # TODO: Consider using the cpan[1] cookbook instead for more robust
