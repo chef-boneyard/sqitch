@@ -20,7 +20,7 @@ Tested on PostgreSQL. Theoretically supports SQLite, Oracle, and MySQL as well, 
 
 ### Chef
 
-- Chef 12+
+- Chef 12.1+
 
 ### Cookbooks
 

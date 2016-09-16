@@ -13,4 +13,4 @@ depends 'build-essential'
 source_url 'https://github.com/chef-cookbooks/sqitch'
 issues_url 'https://github.com/chef-cookbooks/sqitch/issues'
 
-chef_version '>= 12' if respond_to?(:chef_version)
+chef_version '>= 12.1'
