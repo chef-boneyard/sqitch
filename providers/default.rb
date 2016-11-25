@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sqitch
+# Cookbook:: sqitch
 # Provider:: default
 #
 # TODO: ensure we respect config files
