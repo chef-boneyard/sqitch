@@ -20,7 +20,7 @@ engine_modules = {
   'pg'     => 'DBD::Pg',
   'sqlite' => 'DBD::SQLite',
   'oracle' => 'DBD::oracle',
-  'mysql'  => 'DBD::mysql'
+  'mysql'  => 'DBD::mysql',
 }
 
 # prevent pg module install failures on debian platforms
