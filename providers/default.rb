@@ -126,10 +126,8 @@ end
 # @return [Array<String>]
 def make_base_command(action)
   cmd = add_options(['sqitch'], # The beginning of our CLI command
-
                    # These are all the global options specified by the
                    # Resource (as their Ruby method names)
-
                    [ # general options
                      'engine',
                      'extension',
