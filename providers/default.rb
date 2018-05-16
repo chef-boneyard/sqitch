@@ -11,7 +11,7 @@ def whyrun_supported?
   true
 end
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 # Deploy sqitch changesets
 action :deploy do
