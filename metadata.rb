@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@chef.io'
 license          'Apache-2.0'
 description      'Installs sqitch for managing SQL changesets'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.0'
+version          '1.1.0'
 recipe           'sqitch', 'Installs sqitch'
 
 depends 'perl', '>= 1.0.0'
