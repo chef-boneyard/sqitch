@@ -5,7 +5,7 @@
 # Copyright:: 2013-2017, Chef Software, Inc.
 #
 
-include_recipe 'build-essential'
+build_essential 'install compilation tools'
 include_recipe 'perl'
 
 # TODO: Consider using the cpan[1] cookbook instead for more robust

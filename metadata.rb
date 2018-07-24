@@ -8,7 +8,7 @@ version          '1.0.0'
 recipe           'sqitch', 'Installs sqitch'
 
 depends 'perl', '>= 1.0.0'
-depends 'build-essential'
+depends 'build-essential', '>= 5.0'
 
 supports 'all'
 
