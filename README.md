@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/chef-cookbooks/sqitch.svg?branch=master)](http://travis-ci.org/chef-cookbooks/sqitch) [![Cookbook Version](https://img.shields.io/cookbook/v/sqitch.svg)](https://supermarket.chef.io/cookbooks/sqitch)
 
-This cookbook installs [sqitch](http://sqitch.org), a database-agnostic change management system. It also provides LWRPs for using Sqitch to deploy database schema changes.
+This cookbook installs [sqitch](http://sqitch.org), a database-agnostic change management system. It also provides resources for using Sqitch to deploy database schema changes.
 
 ## Features
 
-- `sqitch` LWRP with support for deploying and reverting schema changes
+- `sqitch` resource with support for deploying and reverting schema changes
 - `why-run` support, indicating which changesets (if any) would be deployed
 
 Tested on PostgreSQL. Theoretically supports SQLite, Oracle, and MySQL as well, but is untested for those platforms.
@@ -25,11 +25,11 @@ Tested on PostgreSQL. Theoretically supports SQLite, Oracle, and MySQL as well, 
 ### Cookbooks
 
 - perl
-- build-essential
+- build-essential 5+
 
 ## Usage
 
-In general, you should just use the `sqitch` LWRP (it will automatically include the recipe that installs Sqitch, so you don't need to worry about that).
+In general, you should just use the `sqitch` resource (it will automatically include the recipe that installs Sqitch, so you don't need to worry about that).
 
 For example, to deploy version 2.0.0 of the `myface` schema, you could do:
 
@@ -53,11 +53,11 @@ sqitch "myface_schema" do
 end
 ```
 
-Please consult the documentation in `/resources/default.rb` for complete details on the LWRP.
+Please consult the documentation in `/resources/default.rb` for complete details on the resource.
 
 ## Attributes
 
-- `node['sqitch']['engine']` Controls which driver module is installed, as well as which one is used by the LWRP. Defaults to `pg` for PostgreSQL.
+- `node['sqitch']['engine']` Controls which driver module is installed, as well as which one is used by the resource. Defaults to `pg` for PostgreSQL.
 
 ## Recipes
 
